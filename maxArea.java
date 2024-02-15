@@ -4,17 +4,15 @@ class Solution {
         area = calculateArea(height, start, end);
         if (area>maxArea) maxArea = area;
 
-        while (start < end) {
+        do {
+            area = calculateArea(height, start, end);
+            if (area>maxArea) maxArea = area;
             if (height[start]>height[end]){
                 end -= 1;
-                area = calculateArea(height, start, end);
-                if (area>maxArea) maxArea = area;
             } else {
                 start += 1;
-                area = calculateArea(height, start, end);
-                if (area>maxArea) maxArea = area;
             }
-        }
+        } while (start < end);
         return maxArea;
     }
 
